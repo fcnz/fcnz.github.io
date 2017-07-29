@@ -5,7 +5,10 @@ var chart;
  * @param {Integer} year
  * @param {String} region - Cammel cased name of the region (eg. 'farNorthDistrict').
  */
-function updateChart(year, region) {
+function updateChart() {
+  var year = $('body').attr('data-year')
+  var region = $('body').attr('data-region')
+
   if (!chart) {
     chart = c3.generate({
       bindto: '#chart',
@@ -28,3 +31,9 @@ function updateChart(year, region) {
     })
   })
 }
+
+// Update the chart when either of year or region changes.
+$('body').bind('change', updateChart);
+
+// Initiate the chart
+updateChart()

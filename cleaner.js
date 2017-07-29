@@ -1,4 +1,11 @@
-// node script, must install csv-parse locally (npm i csv-parse)
+/*
+node script, must install csv-parse locally (npm i csv-parse)
+
+Usage: `node cleaner.js > new-csv-file.csv`
+
+This is for data preparation and should not be loaded into the site.
+It looks at a raw csv file from stats nz and sends a cleaned version to stdout.
+*/
 
 const fs = require('fs');
 const csvParser = require('csv-parse/lib/sync');
