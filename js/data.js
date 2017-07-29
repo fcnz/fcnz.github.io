@@ -30,6 +30,40 @@ rawData.split('\n').map(function(line) {
     Q: line[18],
     R: line[19],
     S: line[20],
-    CV: line[21],
+    CV: line[21]
   }
+})
+
+var industryCodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S']
+
+var industries = [
+  'Agriculture, Forrestry and Fishing',
+  'Mining',
+  'Manufacturing',
+  'Electricity, Gas, Water and Waste Services',
+  'Construction',
+  'Wholesale Trade',
+  'Retail Trade',
+  'Accomodation and Food Services',
+  'Transport, Postal and Warehousing',
+  'Information Media and Telecommunications',
+  'Financial and Insurance Services',
+  'Rental, Hiring and Real Estate Services',
+  'Professional, Scientific and Technical Services',
+  'Administrative and Support Services',
+  'Public Administration and Safety',
+  'Education and Training',
+  'Health Care and Social Assistance',
+  'Arts and Recreation Services',
+  'Other Services'
+]
+
+var industriesByCode = {}
+_.map(industryCodes, function(code, i) {
+  industriesByCode[code] = industries[i];
+})
+
+var codesByIndustry = {}
+_.map(industries, function(name, i) {
+  industries[name] = industryCodes[i];
 })
