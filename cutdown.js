@@ -1,4 +1,9 @@
+const util = require('util')
 const geojson = require("./territorial-authorities.json")
+
+
+
+
 
 // console.log("XXXX")
 // console.log(geojson.features)
@@ -55,7 +60,7 @@ polygons.forEach(function(district_obj){
 
   district_obj.geometry.coordinates[0].forEach(function(coordinates, i){
 
-    if( (i%10) === 0 ){
+    if( (i%4) === 0 ){
       less_coordinates.push(makeLatLngObj(coordinates))
     }
 
@@ -80,19 +85,19 @@ polygons.forEach(function(district_obj){
 
 
 
-process.stdout.write("[")
-final_polygons.forEach(function(obj, i){
+// process.stdout.write("[")
+// final_polygons.forEach(function(obj, i){
+//   console.log(JSON.stringify(obj, undefined, 2))
+//
+//   if(i !== final_polygons.length -1){
+//       process.stdout.write(",")
+//   }
+//
+//
+// })
+// process.stdout.write("]")
 
-  console.log(obj)
-
-  if(i !== final_polygons.length -1){
-      process.stdout.write(",")
-  }
-
-
-})
-process.stdout.write("]")
-
+console.log(JSON.stringify(final_polygons, undefined, 2));
 
 
 //
