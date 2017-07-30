@@ -13,7 +13,8 @@ var Map = function(){
   var initMap = function (lat, lng, zoom){
     var platform = new H.service.Platform({
     'app_id': 'DQ9SXnZ2AO94IjXYgTVY',
-    'app_code': 'IVoPXJITL7TIeLAVk4dyhQ'
+    'app_code': 'IVoPXJITL7TIeLAVk4dyhQ',
+    useHTTPS: true
     });
     // Obtain the default map types from the platform object
     var maptypes = platform.createDefaultLayers();
