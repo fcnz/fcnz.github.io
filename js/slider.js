@@ -1,10 +1,10 @@
 function updateYearText() {
-    var year = $('#DataYear').attr('data-year');
+    var year = observables.year;
     $("#YearValue").text(year);
 }
 
 // Update year text whenever year changes
-$('#DataYear').bind('change', updateYearText);
+yearObservers.push(updateYearText);
 
 // Initialize year text
 updateYearText();
@@ -12,8 +12,8 @@ updateYearText();
 // Update the globabl year value when the slider is moved
 $("#SliderElement").on("input change", function() {
     var year = $("#SliderElement").val();
-    $('#DataYear').attr('data-year', year);
+    setYear(year);
 });
 
 // Initialise the sliders value
-$("#SliderElement").val($('#DataYear').attr('data-year'));
+$("#SliderElement").val(observables.year);

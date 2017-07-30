@@ -1,12 +1,12 @@
+var district_style = {
+  strokeColor: 'black',
+  lineWidth: 2,
+  lineJoin: 'bevel'
+}
 
 var Map = function(){
   var map;
   var currentRenderedDistricts = [];
-  var district_style = {
-    strokeColor: 'black',
-    lineWidth: 2,
-    lineJoin: 'bevel'
-  }
 
   var boundariesGeoJSON = getBoundaryPolygons();
 
@@ -40,9 +40,12 @@ var Map = function(){
 
 
   var colourFromNumber = function (value){
+    var min = 0.146040341;
+    var max = 0.578562149;
+    var use = value / (max - min) + min;
       // 1 = RED
       // 0 = GREEN
-      var hue=((1-value)*120).toString(10);
+      var hue=((1-use)*120).toString(10);
       return ["hsla(",hue,",100%,50%, 0.5)"].join("");
 
   }
@@ -67,7 +70,7 @@ var Map = function(){
     polyline.addEventListener('tap', function(evt){
         let districtName = evt.target.P.name
         let districtObject = findDistrictObject(districtName)
-        $('#DataRegion').attr('data-region', districtName)
+        setRegion(districtName)
     })
 
     map.addObject(polyline);
@@ -80,8 +83,7 @@ var Map = function(){
     for(var i = 0; i <= currentRenderedDistricts.length; i++ ){
       let object = currentRenderedDistricts[i]
       if(name_string === object.getData("name").name){
-        console.log(name_string)
-        break;
+        return object;
       }
     }
   }
@@ -103,9 +105,14 @@ var Map = function(){
 
     currentRenderedDistricts.forEach(function(map_object){
 
+      var region = map_object.P.name
+      var year = observables.year
+
+      var number = _.get(allData, year + '.' + region + '.CV')
+
       map_object.setStyle(
         Object.assign(district_style,
-        {"fillColor": colourFromNumber(Math.random().toFixed(1))})
+        {"fillColor": colourFromNumber(number)})
         )
 
     })
@@ -123,29 +130,21 @@ var Map = function(){
 
 var Map = new Map();
 
-Map.init( -36.848461, 174.763336, 6)
+Map.init( -41.248461, 174.763336, 6)
 Map.initBoundaryShapes();
 
 Map.updateHeatMap()
 
 function highlightRegion() {
-  var name = $('#DataRegion').attr('data-region')
+  var name = observables.region
 
-  console.log("XXXXXXXXXX", name)
   // do the thing
+  Map.updateHeatMap()
   Map.findDistrictObject(name).setStyle(
     Object.assign(district_style,
-    {"fillColor": colourFromNumber(Math.random().toFixed(1))})
+    {"fillColor": '#666'})
     )
 }
 
-// $('#DataRegion').bind('change', highlightRegion)
-
-$('body').on('change', '#DataRegion', highlightRegion)
-
-setTimeout(function() {
-  console.log('ran')
-  $('#DataRegion').attr('data-region', 'changed')
-}, 2000)
-
-//
+yearObservers.push(Map.updateHeatMap)
+regionObservers.push(highlightRegion)

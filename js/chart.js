@@ -6,8 +6,8 @@ var chart;
  * @param {String} region - Cammel cased name of the region (eg. 'farNorthDistrict').
  */
 function updateChart() {
-  var year = $('#DataYear').attr('data-year')
-  var region = $('#DataRegion').attr('data-region')
+  var year = observables.year
+  var region = observables.region
 
   if (!chart) {
     chart = c3.generate({
@@ -33,8 +33,8 @@ function updateChart() {
 }
 
 // Update the chart when either of year or region changes.
-$('#DataRegion').bind('change', updateChart);
-$('#DataYear').bind('change', updateChart);
+yearObservers.push(updateChart)
+regionObservers.push(updateChart)
 
 // Initiate the chart
 updateChart()
