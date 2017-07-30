@@ -19,7 +19,7 @@ var Map = function(){
     var maptypes = platform.createDefaultLayers();
     // Instantiate (and display) a map object:
     map = new H.Map(
-    document.getElementById('mapContainer'),
+    document.getElementById('MapComponent'),
     maptypes.normal.map,
     {
       zoom: zoom,
@@ -67,6 +67,7 @@ var Map = function(){
     polyline.addEventListener('tap', function(evt){
         let districtName = evt.target.P.name
         let districtObject = findDistrictObject(districtName)
+        $('#DataRegion').attr('data-region', districtName)
     })
 
     map.addObject(polyline);
@@ -114,7 +115,8 @@ var Map = function(){
   return {
       init: initMap,
       updateHeatMap: updateHeatMap,
-      initBoundaryShapes: initBoundaryShapes
+      initBoundaryShapes: initBoundaryShapes,
+      findDistrictObject: findDistrictObject
   }
 
 }
@@ -126,6 +128,24 @@ Map.initBoundaryShapes();
 
 Map.updateHeatMap()
 
+function highlightRegion() {
+  var name = $('#DataRegion').attr('data-region')
 
+  console.log("XXXXXXXXXX", name)
+  // do the thing
+  Map.findDistrictObject(name).setStyle(
+    Object.assign(district_style,
+    {"fillColor": colourFromNumber(Math.random().toFixed(1))})
+    )
+}
+
+// $('#DataRegion').bind('change', highlightRegion)
+
+$('body').on('change', '#DataRegion', highlightRegion)
+
+setTimeout(function() {
+  console.log('ran')
+  $('#DataRegion').attr('data-region', 'changed')
+}, 2000)
 
 //

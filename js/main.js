@@ -1,10 +1,10 @@
 // Set up global variables that can be watched as attrs on body element (don't make another body element BTW)
-$('body').attr('data-year', 2016)
-$('body').attr('data-region', 'Ashburton District')
+$('#DataYear').attr('data-year', 2016)
+$('#DataRegion').attr('data-region', 'Ashburton District')
 
 function updateRegionInfo() {
-    var region = $('body').attr('data-region')
-    var year = $('body').attr('data-year')
+    var region = $('#DataRegion').attr('data-region')
+    var year = $('#DataYear').attr('data-year')
 
     var CV = _.get(allData, year + '.' + region + '.CV')
 
@@ -12,6 +12,7 @@ function updateRegionInfo() {
     $("#RegionName").text(region)
 }
 
-$('body').bind('change', updateRegionInfo)
+$('#DataRegion').bind('change', updateRegionInfo)
+$('#DataYear').bind('change', updateRegionInfo)
 
 updateRegionInfo()
