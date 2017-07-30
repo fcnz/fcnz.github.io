@@ -10,7 +10,7 @@ var Map = function(){
 
   var boundariesGeoJSON = getBoundaryPolygons();
 
-  var initMap = function (){
+  var initMap = function (lat, lng, zoom){
     var platform = new H.service.Platform({
     'app_id': 'DQ9SXnZ2AO94IjXYgTVY',
     'app_code': 'IVoPXJITL7TIeLAVk4dyhQ'
@@ -22,8 +22,8 @@ var Map = function(){
     document.getElementById('mapContainer'),
     maptypes.normal.map,
     {
-      zoom: 7,
-      center: { lng: 174.763336, lat: -36.848461 }
+      zoom: zoom,
+      center: { lng: lng, lat: lat}
     });
 
     // Enable the event system on the map instance:
@@ -121,7 +121,7 @@ var Map = function(){
 
 var Map = new Map();
 
-Map.init()
+Map.init( -36.848461, 174.763336, 6)
 Map.initBoundaryShapes();
 
 Map.updateHeatMap()
