@@ -8,3 +8,90 @@
     height: 2pc;
     background-color: #EEE;
 }
+
+#TitleBar {
+    margin-top: 51px;
+    height: 75px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #d0d0d0;
+}
+
+#Title {
+    margin: 0 1.5em;
+    flex-grow: 0;
+    border: none;
+    white-space: nowrap;
+}
+
+#SliderLocation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+#SliderWithLabels {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+#SliderElement {
+    margin: 0;
+    flex-grow: 1;
+}
+
+.slider-label {
+     flex-grow: 0;
+     margin: 0 1em;
+     font-weight: bold;
+     font-size: 18px;
+}
+
+#PageContent {
+    width: 100vw;
+    height: calc(100vh - 126px);
+}
+
+#MapComponent {
+    height: calc(100vh - 126px);
+}
+
+#PieChartArea {
+    height: calc(100vh - 126px);
+    display: flex;
+    flex-direction: column;
+    border-left: solid 1px #d0d0d0;
+}
+
+#RegionInfo {
+    padding: 20px;
+}
+
+#RegionName {
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: solid 1px #d0d0d0;
+}
+
+#RegoinMeta {
+    margin-top: 1em;
+    font-size: 18px;
+}
+
+#ChartTitle {
+    text-align: center;
+    font-size: 22px;
+}
+
+#chart {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    height: calc(100vh - 283px);
+}

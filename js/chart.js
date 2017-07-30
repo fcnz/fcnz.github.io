@@ -12,7 +12,7 @@ function updateChart() {
   if (!chart) {
     chart = c3.generate({
       bindto: '#chart',
-      legend: { show: false },
+      legend: { show: true },
       tooltip: { format: { value: function(value) { return value } } },
       data: {
         columns: [],
