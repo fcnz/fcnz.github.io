@@ -7,8 +7,8 @@ function updateRegionInfo() {
     var year = $('body').attr('data-year')
 
     var CV = _.get(allData, year + '.' + region + '.CV')
-
-    $("#CV").text(CV)
+    var DI = parseFloat(CV).toFixed(2)
+    $("#CV").text(DI)
     $("#RegionName").text(region)
 }
 

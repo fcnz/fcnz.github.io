@@ -5,34 +5,48 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Industry Diversity</title>
+    <title>Industry Diversity: About Our Project</title>
 
-    <link rel="stylesheet" href="styleSheet.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.15/c3.min.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <div class="container">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li class="active"><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <!--/.nav-collapse -->
-            </div>
-        </nav>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <h2 id="OurTitle" class="page-header text-center">About Us Page </h2>
-            <div class="row">
-                <p> Text about us goes here </p>
-                <a href="https://github.com/fcnz/got-milk"> GitHub Repo </a>
-
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
         </div>
+    </nav>
+    <div id="TitleBar">
+        <h1 id="Title" class="page-header text-center">After The Milk Rush…</h1>
+    </div>
+    <div class="container" id="PageContent">
+        <h3 class="text-center">A look at industry diversity and worker concentration in New Zealand</h3>
+        <p> A lack of industry diversity and overconcentration of workers in a single industry can make a region vulnerable to challenges from external forces, whereas promoting industry diversity and increasing the distribution of workers across multiple
+            industries improves the economic resilience of the region. In the past, single-minded investment by a region in an industry, such as mining or manufacturing, has led to some challenging times once the boom is over or production moves overseas.
+            This project is an interactive data visualisation tool which allows users to explore and understand industry diversity and concentration across New Zealand.</p>
+        <p>We sourced data on the number of employees per industry from Statistics New Zealand and determined the industry diversity by calculating the coefficient of variance of the spread of labour between industries for each area. These values were then
+            used to generate a heatmap of New Zealand, with regions coloured from green (high diversity) to red (low diversity). The user can interact with the heatmap to view the industry diversity over time (from 2000 to 2016) by dragging a sliding
+            scale. For a more in-depth breakdown, the user can select a region on the map to generate a pie chart for that area showing the split of workers by industry. The user can also interact with this data over time, by dragging the sliding scale.</p>
+        <p>In future, overlaying additional datasets, such as regional GDP and unemployment, and further stratification of the data (e.g. distribution of a single industry across the country) would allow further insights to be drawn.</p>
+        <p><strong>Datasets Used:</strong></p>
+        <p><a href="http://nzdotstat.stats.govt.nz/wbos/Index.aspx?DataSetCode=TABLECODE7601">Business Demography (Geographic units by region and industry 2000-2016)</a></p>
+        <p><strong>Libraries Used:</strong><br />
+            <ul>
+                <li><a href="https://developer.here.com/">Here Api</a></li>
+                <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+                <li><a href="https://jquery.com/">JQuery</a></li>
+                <li><a href="http://c3js.org/">C3 Charts</a></li>
+                <li><a href="https://lodash.com/">Lodash</a></li>
+            </ul>
+        </p>
     </div>
 </body>
 

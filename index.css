@@ -2,13 +2,6 @@
     margin-top: 5pc;
 }
 
-#SliderElement {
-    margin: 2pc auto;
-    width: 35pc;
-    height: 2pc;
-    background-color: #EEE;
-}
-
 #TitleBar {
     margin-top: 51px;
     height: 75px;
@@ -43,18 +36,22 @@
 #SliderElement {
     margin: 0;
     flex-grow: 1;
+    width: 100px;
 }
 
 .slider-label {
-     flex-grow: 0;
-     margin: 0 1em;
-     font-weight: bold;
-     font-size: 18px;
+    flex-grow: 0;
+    margin: 0 1em;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 #PageContent {
     width: 100vw;
     height: calc(100vh - 126px);
+    font-size: 18px;
+    margin: 1em;
+    padding: 1em;
 }
 
 #MapComponent {
@@ -95,3 +92,5 @@
     width: 100%;
     height: calc(100vh - 283px);
 }
+
+p {}
