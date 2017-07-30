@@ -67,6 +67,7 @@ var Map = function(){
     polyline.addEventListener('tap', function(evt){
         let districtName = evt.target.P.name
         let districtObject = findDistrictObject(districtName)
+        
     })
 
     map.addObject(polyline);

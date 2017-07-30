@@ -24,7 +24,7 @@ function updateChart() {
   chart.unload({
     ids: industries
   })
-
+ 
   chart.load({
     columns: _.map(industryCodes, function(code) {
       return [industriesByCode[code], _.get(allData, year + '.' + region + '.' + code)]

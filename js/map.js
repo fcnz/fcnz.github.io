@@ -67,7 +67,7 @@ var Map = function(){
     polyline.addEventListener('tap', function(evt){
         let districtName = evt.target.P.name
         let districtObject = findDistrictObject(districtName)
-        $('#DataRegion').attr('data-region', districtName)
+
     })
 
     map.addObject(polyline);
@@ -81,6 +81,7 @@ var Map = function(){
       let object = currentRenderedDistricts[i]
       if(name_string === object.getData("name").name){
         console.log(name_string)
+        updateRegion(name_string);
         break;
       }
     }
@@ -98,6 +99,11 @@ var Map = function(){
     });
   }
 
+  var updateRegion = function(name){
+    $('body').attr('data-region', name)
+    updateChart()
+    updateRegionInfo()
+  }
 
   var updateHeatMap = function(){
 
@@ -129,7 +135,7 @@ Map.initBoundaryShapes();
 Map.updateHeatMap()
 
 function highlightRegion() {
-  var name = $('#DataRegion').attr('data-region')
+  var name = $('body').attr('data-region')
 
   console.log("XXXXXXXXXX", name)
   // do the thing
@@ -137,11 +143,11 @@ function highlightRegion() {
     Object.assign(district_style,
     {"fillColor": colourFromNumber(Math.random().toFixed(1))})
     )
-}
+} 
 
 // $('#DataRegion').bind('change', highlightRegion)
 
-$('body').on('change', '#DataRegion', highlightRegion)
+$('body').bind('change', highlightRegion)
 
 setTimeout(function() {
   console.log('ran')
