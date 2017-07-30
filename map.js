@@ -21,8 +21,13 @@ function initMap(){
   // adds default map behavior
   var behavior = new H.mapevents.Behavior(mapEvents);
 
+
   return map;
 }
+
+
+
+
 
 var map = initMap()
 
@@ -38,8 +43,6 @@ var boundariesGeoJSON = getBoundaryPolygons();
 function colourFromNumber(value){
     // 1 = RED
     // 0 = GREEN
-
-    //value from 0 to 1
     var hue=((1-value)*120).toString(10);
     return ["hsla(",hue,",100%,50%, 0.5)"].join("");
 
@@ -72,7 +75,6 @@ function addDistrict(points){
 }
 
 
-
 function findDistrictObject(name_string){
 
   for(var i = 0; i <= currentRenderedDistricts.length; i++ ){
@@ -96,7 +98,6 @@ function initBoundaryShapes(){
 
 function updateHeatMap(){
 
-
   currentRenderedDistricts.forEach(function(map_object){
 
     map_object.setStyle(
@@ -110,6 +111,10 @@ function updateHeatMap(){
 
 initBoundaryShapes()
 
+
+setTimeout(function(){
+  updateHeatMap()
+}, 4000)
 
 
 
